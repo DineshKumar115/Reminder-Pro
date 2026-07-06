@@ -1,0 +1,19 @@
+.navbar{
+
+    background:linear-gradient(
+        135deg,
+        #6C63FF,
+        #4338CA
+    );
+
+    height:70px;
+
+}
+
+.navbar-brand{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
