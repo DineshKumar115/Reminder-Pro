@@ -49,16 +49,11 @@ Author : Dineshkumar V
 # CORS Configuration
 # ---------------------------------------
 origins = [
-
-    # Local Development
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 
-    # Vercel Frontend
     "https://reminder-pro-two.vercel.app",
-
-    # Add future Vercel domain here if needed
-    # "https://reminder-pro.vercel.app",
+    "https://reminder-dqwmw3brd-dineshkumar-vs-projects.vercel.app",
 ]
 
 app.add_middleware(
