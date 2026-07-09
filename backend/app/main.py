@@ -5,18 +5,20 @@ from app.core.database import Base, engine
 
 from app.models import User
 from app.models import Reminder
-from app.api.dashboard import router as dashboard_router
 
 from app.api.user import router as user_router
-from app.api.reminder import router as reminder_router
 from app.api.auth import router as auth_router
-
+from app.api.reminder import router as reminder_router
+from app.api.dashboard import router as dashboard_router
 
 # ---------------------------------------
 # Create Database Tables
 # ---------------------------------------
 Base.metadata.create_all(bind=engine)
 
+# ---------------------------------------
+# FastAPI App
+# ---------------------------------------
 app = FastAPI(
 
     title="Reminder Web API",
@@ -48,24 +50,23 @@ Author : Dineshkumar V
 # ---------------------------------------
 origins = [
 
+    # Local Development
     "http://localhost:5173",
+    "http://127.0.0.1:5173",
 
-    "http://127.0.0.1:5173"
+    # Vercel Frontend
+    "https://reminder-pro-two.vercel.app",
 
+    # Add future Vercel domain here if needed
+    # "https://reminder-pro.vercel.app",
 ]
 
 app.add_middleware(
-
     CORSMiddleware,
-
     allow_origins=origins,
-
     allow_credentials=True,
-
     allow_methods=["*"],
-
-    allow_headers=["*"]
-
+    allow_headers=["*"],
 )
 
 # ---------------------------------------
@@ -83,9 +84,6 @@ app.include_router(dashboard_router)
 def home():
 
     return {
-
         "status": True,
-
         "message": "Welcome to Reminder Web API"
-
     }
